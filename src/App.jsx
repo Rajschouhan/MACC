@@ -1,18 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; // 1 created 1
+import Hero1 from './components/Hero1'; //2
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      
-     <h1 className="container text-center mt-5">MACC Test - Bootstrap Works!</h1>
-      
-    </>
-  )
+    <Router>
+      <div className="App">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Hero1 />} /> {/* Home = Hero1 first */}
+          {/* Later: /projects, /admin */}
+        </Routes>
+
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
