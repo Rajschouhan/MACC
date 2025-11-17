@@ -20,6 +20,6 @@ If you are developing a production application, we recommend using TypeScript wi
 3   app,js me RRouterdom import kiya, or 1 component navbar lgya.
 4   components/Navbar.jsx bnya
 5   component/hero1.jsx bnya fir humne means FIRST Section.
-6   
+6   New Branch bnai Hero2 or usme Hero2 bnya section pura ab use appjs me import kr lenge taki ye component ui pr dikhe.
 7   
 8   

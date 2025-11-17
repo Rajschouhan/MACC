@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'; // 1 created 1
 import Hero1 from './components/Hero1'; //2
+import Hero2 from './components/Hero2';
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Hero1 />} /> {/* Home = Hero1 first */}
+          
           {/* Later: /projects, /admin */}
         </Routes>
+      <Hero2/>
 
       </div>
     </Router>
