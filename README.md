@@ -19,3 +19,7 @@ If you are developing a production application, we recommend using TypeScript wi
 2   env me supabase ki keys or emailjs ki keys lgai
 3   app,js me RRouterdom import kiya, or 1 component navbar lgya.
 4   components/Navbar.jsx bnya
+5   component/hero1.jsx bnya fir humne means FIRST Section.
+6   
+7   
+8   

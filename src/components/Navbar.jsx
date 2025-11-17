@@ -6,6 +6,7 @@ const NavbarComp = () => (
   <BsNavbar bg="dark" variant="dark" expand="lg" sticky="top" className="py-2">
     <Container>
       <BsNavbar.Brand as={Link} to="/"> 
+      <img src="/logo.png" alt="MACC Logo" height="40" className="me-2 d-inline" />
         MACC {/* Add <img src="/logo.png" alt="MACC" height="40" className="me-2" /> later */}
       </BsNavbar.Brand>
       <BsNavbar.Toggle />
