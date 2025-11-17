@@ -1,47 +1,100 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { motion } from 'framer-motion';
-import { BsCheckCircle, BsClock, BsLightbulb, BsPeople } from 'react-icons/bs';
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { motion } from "framer-motion";
+import { BsCheckCircle, BsClock, BsLightbulb, BsPeople } from "react-icons/bs";
+
+const features = [
+  { icon: BsCheckCircle, title: "Unmatched Quality", text: "Craftsmanship guaranteed.", color: "text-success" },
+  { icon: BsClock, title: "Timely Delivery", text: "Projects always on schedule.", color: "text-info" },
+  { icon: BsLightbulb, title: "Innovative Designs", text: "Creative modern solutions.", color: "text-warning" },
+  { icon: BsPeople, title: "Focused Service", text: "Client satisfaction always.", color: "text-primary" }
+];
 
 const Hero1 = () => (
-  <section className="py-5 bg-zinc-800">
+  <section
+    className="py-5 position-relative"
+    style={{
+      minHeight: "100vh",
+      background: "linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.75))",
+      backgroundImage: "url('/bgImg.png')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      paddingTop: "120px"
+    }}
+  >
     <Container>
-      <Row className="align-items-center">
+      <Row className="align-items-center mt-5 gy-5">
+
+        {/* LEFT CONTENT */}
         <Col md={6}>
-          <motion.img 
-            src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-            alt="MACC Team" 
-            className="img-fluid rounded" 
-            initial={{ opacity: 0, x: -50 }} 
-            animate={{ opacity: 1, x: 0 }} 
-            transition={{ duration: 0.8 }}
-          />
-        </Col>
-        <Col md={6}>
-          <motion.h1 
-            className="display-4 fw-bold text-primary mb-3" 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Building Your Vision, Crafting Your Future
-          </motion.h1>
-          <p className="lead mb-4">
-            At MACC, we turn your ideas into reality with expert craftsmanship and innovative solutions. From concept to completion, we're dedicated to creating spaces that inspire and stand the test of time. Let's build a future you can be proud of. Based in Indore, M.P., with 25+ years serving premium residential & commercial dreams.
-          </p>
-          <div className="d-flex flex-wrap gap-3 mb-4">
-            <div className="d-flex align-items-center"><BsCheckCircle className="text-success me-2" />Expert Craftsmanship</div>
-            <div className="d-flex align-items-center"><BsClock className="text-info me-2" />On-Time, Within Budget</div>
-            <div className="d-flex align-items-center"><BsLightbulb className="text-warning me-2" />Innovative Solutions</div>
-            <div className="d-flex align-items-center"><BsPeople className="text-primary me-2" />Client-Centered Approach</div>
-          </div>
-          <Button variant="primary" size="lg">Learn More</Button>
+            <h1 className="fw-bold text-white mb-3" style={{ fontSize: "3rem", lineHeight: "1.2" }}>
+              Welcome to <span style={{ color: "#f9c513" }}>Maa Ashapura</span> Constructions
+            </h1>
+
+            <p className="text-white mb-4" style={{ fontSize: "1.15rem", lineHeight: "1.7" }}>
+              One of the fastest growing construction companies in India, delivering
+              trust, quality, and excellence in every infrastructure project.
+            </p>
+
+            <Button
+              style={{
+                backgroundColor: "#f9c513",
+                border: "none",
+                fontWeight: 600,
+                color: "#000",
+                padding: "12px 28px",
+                borderRadius: "10px",
+                fontSize: "18px",
+              }}
+            >
+              Contact Us
+            </Button>
+          </motion.div>
         </Col>
+
+        {/* RIGHT IMAGE */}
+        <Col md={6} className="pt-md-0 pt-3">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="rounded-4 overflow-hidden shadow-lg"
+          >
+            <motion.img
+              src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?q=80&w=1171&auto=format&fit=crop"
+              alt="Maa Ashapura Team"
+              className="img-fluid"
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
+        </Col>
+
       </Row>
-      <Row className="mt-5 text-center">
-        <Col md={3}><BsCheckCircle size={40} className="text-success mb-2" /><h6>Unmatched Quality</h6><p>Craftsmanship guaranteed.</p></Col>
-        <Col md={3}><BsClock size={40} className="text-info mb-2" /><h6>Timely Delivery</h6><p>Projects on schedule.</p></Col>
-        <Col md={3}><BsLightbulb size={40} className="text-warning mb-2" /><h6>Innovative Designs</h6><p>Creative modern solutions.</p></Col>
-        <Col md={3}><BsPeople size={40} className="text-primary mb-2" /><h6>Focused Service</h6><p>Client satisfaction always.</p></Col>
+
+      {/* FEATURES GRID */}
+      <Row className="text-center mt-5 gy-4">
+        {features.map((item, idx) => (
+          <Col md={3} key={idx}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03 , border: "1px solid #24231fff" }}
+              
+              transition={{ duration: 0.2 }}
+              className="p-4 rounded-4 bg-white  shadow-sm border h-100"
+            >
+              <item.icon size={40} className={`${item.color} mb-2`} />
+              <h6 className="fw-bold">{item.title}</h6>
+              <p className="text-muted small mb-0">{item.text}</p>
+            </motion.div>
+          </Col>
+        ))}
       </Row>
     </Container>
   </section>
