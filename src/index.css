@@ -5,6 +5,48 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* MAA ASHAPURA OFFICIAL THEME - 2025 */
+:root {
+  --bg-primary: #0a0a1f;
+  --bg-secondary: #001233;
+  --gold: #f9c513;
+  --cyan: #00d4ff;
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.8);
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Apply to all sections */
+section {
+  background: inherit;
+  position: relative;
+}
+
+/* Golden text glow */
+.text-gold { color: var(--gold); text-shadow: 0 0 20px rgba(249,197,19,0.6); }
+.text-cyan { color: var(--cyan); }
+.glow-gold { filter: drop-shadow(0 0 20px var(--gold)); }
+
+/* Cards universal style */
+.card-luxe {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(249,197,19,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   font-family: 'Montserrat', sans-serif;

@@ -1,111 +1,195 @@
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
-import { BsTrophy, BsBuilding, BsClockHistory, BsPeople } from 'react-icons/bs';
-
-const stats = [
-  { icon: BsBuilding, number: 75, suffix: '+', label: 'Projects Completed', color: '#f9c513' },
-  { icon: BsTrophy, number: 25, suffix: '+', label: 'Years of Excellence', color: '#00d4ff' },
-  { icon: BsClockHistory, number: 4, label: 'Ongoing Mega Projects', color: '#ff6b6b' },
-  { icon: BsPeople, number: 98, suffix: '%', label: 'Client Satisfaction', color: '#51cf66' },
-];
+import { Container } from 'react-bootstrap';
+import { motion, AnimatePresence } from 'framer-motion';
+import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
+import { useState } from 'react';
 
 const Hero2 = () => {
+  const [index, setIndex] = useState(0);
+const cards = [
+     {
+    type: 'logo',
+    img: '/logo.png',  // ← Your reflection logo (the one you just sent)
+    title: 'MAA ASHAPURA',
+    subtitle: 'CONSULTANT & CONSTRUCTION CO.',
+    tagline: 'YOU DREAM IT, WE BUILD IT',
+  },
+  {
+    type: 'project',
+    img: '/project1.jpg',
+    title: 'Skyline Residency',
+    location: 'Vijay Nagar, Indore',
+    tag: 'Completed 2024',
+  },
+ 
+  {
+    type: 'project',
+    img: '/project2.jpg',
+    title: 'Emerald Heights',
+    location: 'Rau, Indore',
+    tag: 'Under Construction',
+  },
+];
+
+  // For infinite loop
+  const prevIndex = index === 0 ? cards.length - 1 : index - 1;
+  const nextIndex = index === cards.length - 1 ? 0 : index + 1;
+
+  const goPrev = () => setIndex(prevIndex);
+  const goNext = () => setIndex(nextIndex);
+
   return (
     <section
-      className="position-relative py-5"
+      className="py-5 position-relative overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #0f0f1e 0%, #001833 100%)',
-        minHeight: '90vh',
-        overflow: 'hidden',
+        background: 'linear-gradient(135deg, #0a0a1f 0%, #001233 100%)',
+        minHeight: '100vh',
       }}
     >
-      {/* Floating Logo Centerpiece */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 50 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="text-center mb-5"
-        style={{ marginTop: '5rem' }}
-      >
-        <img
-          src="/maa-ashapura-logo-full.png"
-          alt="Maa Ashapura Full Logo"
-          style={{ maxWidth: '650px', width: '90%', filter: 'drop-shadow(0 0 30px rgba(249,197,19,0.4))' }}
-        />
-      </motion.div>
+      {/* Background Logo */}
+      <div className="position-absolute top-50 start-50 translate-middle opacity-5 pointer-events-none">
+        <img src="/logo-full.png" alt="" style={{ maxWidth: '1400px', width: '100vw' }} />
+      </div>
 
-      <Container className="position-relative z-2">
-        <Row className="g-5 justify-content-center">
-          {stats.map((stat, index) => (
-            <Col md={6} lg={3} key={index}>
-              <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                whileHover={{ y: -10, scale: 1.05 }}
-              >
-                <Card
-                  className="text-center border-0 h-100"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    backdropFilter: 'blur(10px)',
-                    borderRadius: '20px',
-                    padding: '2rem 1.5rem',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                  }}
-                >
-                  <div className="mb-3">
-                    <stat.icon size={50} style={{ color: stat.color }} />
-                  </div>
-                  <h2 className="display-3 fw-bold text-white">
-                    <CountUp
-                      end={stat.number}
-                      duration={3.5}
-                      suffix={stat.suffix || ''}
-                      enableScrollSpy
-                      scrollSpyOnce
-                    />
-                  </h2>
-                  <p className="text-white fw-medium fs-5">{stat.label}</p>
-                </Card>
-              </motion.div>
-            </Col>
-          ))}
-        </Row>
-
-        {/* Tagline Below Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1 }}
-          className="text-center mt-5"
+      <Container className="position-relative z-3">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center text-white mb-5"
+          style={{ fontSize: '3rem', fontWeight: 800 }}
         >
-          <h3 className="text-white" style={{ fontFamily: 'Playfair Display, serif', fontSize: '2.5rem' }}>
-            "Excellence is not an act, but a habit."
-          </h3>
-          <p className="text-white opacity-75 mt-3 fs-5">
-            — Maa Ashapura Construction Co.
-          </p>
-        </motion.div>
-      </Container>
+          <span style={{ color: '#f9c513' }}>Crafting</span> Landmarks of Tomorrow
+        </motion.h2>
 
-      {/* Subtle Background Pattern */}
-      <div
-        className="position-absolute top-0 start-0 w-100 h-100 opacity-5"
-        style={{
-          backgroundImage: 'url("/maa-ashapura-logo-full.png")',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0) invert(1)',
-        }}
-      />
+        {/* Carousel Container */}
+        <div className="position-relative" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div className="d-flex align-items-center justify-content-center gap-4 position-relative">
+            {/* LEFT CARD */}
+            <motion.div
+              layout
+              initial={{ opacity: 0, x: -100, scale: 0.85 }}
+              animate={{ opacity: 1, x: 0, scale: 0.9 }}
+              exit={{ opacity: 0, x: 100, scale: 0.85 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="flex-shrink-0"
+              onClick={goPrev}
+              style={{ cursor: 'pointer' }}
+            >
+              <CardItem card={cards[prevIndex]} isSide />
+            </motion.div>
+
+            {/* CENTER CARD (MAIN) */}
+            <motion.div
+              layout
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1.1 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="flex-shrink-0 z-10"
+            >
+              <CardItem card={cards[index]} isCenter />
+            </motion.div>
+
+            {/* RIGHT CARD */}
+            <motion.div
+              layout
+              initial={{ opacity: 0, x: 100, scale: 0.85 }}
+              animate={{ opacity: 1, x: 0, scale: 0.9 }}
+              exit={{ opacity: 0, x: -100, scale: 0.85 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="flex-shrink-0"
+              onClick={goNext}
+              style={{ cursor: 'pointer' }}
+            >
+              <CardItem card={cards[nextIndex]} isSide />
+            </motion.div>
+          </div>
+
+          {/* ARROWS */}
+ <button
+  onClick={goPrev}
+  className="position-absolute top-50 start-0 translate-middle-y btn rounded-circle p-0 shadow-lg"
+  style={{
+    width: '80px', height: '80px',
+    background: 'rgba(249,197,19,0.15)',
+    border: '4px solid #f9c513',
+    left: '14%',
+    zIndex: 30,
+  }}
+  whileHover={{ scale: 1.3, background: '#f9c513' }}
+  whileTap={{ scale: 0.9 }}
+>
+  <BsArrowLeftCircle size={48} color="#f9c513" />
+</button>
+
+<button
+  onClick={goNext}
+  className="position-absolute top-50 end-0 translate-middle-y btn rounded-circle p-0 shadow-lg"
+  style={{
+    width: '80px', height: '80px',
+    background: 'rgba(249,197,19,0.15)',
+    border: '4px solid #f9c513',
+    right: '3%',
+    zIndex: 30,
+  }}
+  whileHover={{ scale: 1.3, background: '#f9c513' }}
+  whileTap={{ scale: 0.9 }}
+>
+  <BsArrowRightCircle size={48} color="#f9c513" />
+</button>
+
+        </div>
+      </Container>
     </section>
+  );
+};
+
+// Reusable Card Component
+const CardItem = ({ card, isCenter = false, isSide = false }) => {
+  return (
+    <motion.div
+      className="rounded-4 overflow-hidden position-relative"
+      style={{
+        width: isCenter ? '460px' : '380px',
+        height: '620px',
+        boxShadow: isCenter
+          ? '0 0 80px rgba(249,197,19,0.6), 0 30px 60px rgba(0,0,0,0.7)'
+          : '0 20px 40px rgba(0,0,0,0.5)',
+        border: isCenter ? '4px solid #f9c513' : '2px solid rgba(249,197,19,0.3)',
+        transition: 'all 0.4s',
+      }}
+      whileHover={{ scale: isCenter ? 1.05 : 1.08 }}
+    >
+      <img
+        src={card.img}
+        alt={card.title}
+        className="w-100 h-100 object-fit-cover"
+        style={{ filter: isCenter ? 'brightness(1.1)' : 'brightness(0.9)' }}
+      />
+
+      <div
+        className="position-absolute bottom-0 start-0 w-100 p-5"
+        style={{
+          background: 'linear-gradient(transparent, rgba(0,0,0,0.95))',
+        }}
+      >
+        {card.type === 'logo' ? (
+          <>
+            <h3 className="fw-bold mb-1" style={{ fontSize: '2.4rem', color: '#f9c513' }}>
+              {card.title}
+            </h3>
+            <p className="mb-1" style={{ fontSize: '1.3rem', color: '#fff' }}>{card.subtitle}</p>
+            <p className="fw-bold" style={{ color: '#00eeff', fontSize: '1.4rem' }}>
+              {card.tagline}
+            </p>
+          </>
+        ) : (
+          <>
+            <h4 className="fw-bold text-white mb-1">{card.title}</h4>
+            <p className="text-white opacity-80 mb-2">{card.location}</p>
+            <span className="badge bg-warning text-dark fs-6 px-4 py-2">{card.tag}</span>
+          </>
+        )}
+      </div>
+    </motion.div>
   );
 };
 
