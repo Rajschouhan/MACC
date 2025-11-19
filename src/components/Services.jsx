@@ -17,9 +17,15 @@ const cardAnimation = {
   viewport: { once: true },
 };
 
-const Services = () => {
+const Services = () => { 
   return (
-    <section className="py-5 position-relative overflow-hidden">
+    <section className="py-5 position-relative overflow-hidden" style={{
+  background: "linear-gradient(135deg, #0a0a1f 0%, #001233 100%)",
+  paddingTop: "var(--navbar-height, 100px)",
+  minHeight: "100vh"
+}} >
+
+
 
 
       <Container className="position-relative z-3">
