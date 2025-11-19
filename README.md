@@ -25,6 +25,6 @@ If you are developing a production application, we recommend using TypeScript wi
 5   component/hero1.jsx bnya fir humne means FIRST Section.
 6   New Branch bnai Hero2 or usme Hero2 bnya section pura ab use appjs me import kr lenge taki ye component ui pr dikhe.
 5   component/hero1.jsx bnya fir humne means FIRST Section isme Ek SECTION ME Container me humne Framer-Motion lgya hai ,img k niche 4 boxes pr array lgya hai.
-6   
-7   
+6   Now we will go with Section 3 , i.e Services .
+7   creating new component SERVICES.
 8   

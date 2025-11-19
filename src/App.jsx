@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'; // 1 created 1
 import Hero1 from './components/Hero1'; //2
 import Hero2 from './components/Hero2';
+import Services from './components/Services';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           {/* Later: /projects, /admin */}
         </Routes>
       <Hero2/>
+      <Services />
 
       </div>
     </Router>
