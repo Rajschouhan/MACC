@@ -12,15 +12,15 @@ const features = [
 const Hero1 = () => (
   <section
     className="py-5 position-relative"
-    style={{
-      minHeight: "100vh",
-      background: "linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.75))",
-      backgroundImage: "url('/bgImg.png')",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      paddingTop: "120px"
-    }}
+   style={{
+  minHeight: "90vh",
+  background: "linear-gradient(135deg, #0a0a1f, #001233)",
+  backgroundImage: "url('/bgImg.png')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundBlendMode: "overlay",
+  paddingTop: "var(--navbar-height, 100px)",
+}}
   >
     <Container>
       <Row className="align-items-center mt-5 gy-5">
