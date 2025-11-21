@@ -31,3 +31,5 @@ If you are developing a production application, we recommend using TypeScript wi
 8   after this we have our new Portfolio section , in which we have projects . 
 9   Next we have , Testimonials Section.
 10  Here we go with the last Section that is CONTACT.
+    we devloped contact section and also Footer section , now we are going with the admin panel.
+    11  ADMIN PANEL- admin.jsx:

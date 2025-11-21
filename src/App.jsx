@@ -7,6 +7,7 @@ import Portfolio from './components/Portfolio'; //3
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact'; //4
 import Footer from './components/Footer';
+import AdminPanel from './components/Adminpanel';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Hero1 />} /> {/* Home = Hero1 first */}
-          
+          <Route path="/admin-macc" element={<AdminPanel />} />
           {/* Later: /projects, /admin */}
         </Routes>
       <Hero2/>
