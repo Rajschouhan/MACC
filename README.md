@@ -30,3 +30,4 @@ If you are developing a production application, we recommend using TypeScript wi
     this service section have our services cards.
 8   after this we have our new Portfolio section , in which we have projects . 
 9   Next we have , Testimonials Section.
+10  Here we go with the last Section that is CONTACT.

@@ -5,6 +5,8 @@ import Hero2 from './components/Hero2';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio'; //3
 import Testimonials from './components/Testimonials';
+import Contact from './components/Contact'; //4
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
       <Services />
       <Portfolio />
       <Testimonials />
+      <Contact/>
+      <Footer />
       </div>
     </Router>
   );

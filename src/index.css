@@ -86,3 +86,21 @@ section, .hero-section {
   background: #f9c513;
   border-radius: 2px;
 }
+
+/* MAKE PLACEHOLDER VISIBLE & GOLDEN */
+.form-control::placeholder {
+  color: #f9c513 !important;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.form-control:focus::placeholder {
+  color: rgba(249,197,19,0.6);
+}
+
+/* Golden glow on focus */
+.form-control:focus {
+  border-color: #f9c513 !important;
+  box-shadow: 0 0 20px rgba(249,197,19,0.4) !important;
+  background: rgba(249,197,19,0.05) !important;
+}
