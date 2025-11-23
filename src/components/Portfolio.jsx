@@ -1,134 +1,142 @@
-// src/components/Portfolio.jsx → FINAL MOBILE-FIRST PORTFOLIO
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-
-const projects = [
-  { src: "/projects/haveli.png", category: "residential", title: "The Patel's Haveli" },
-  { src: "/projects/villa5.png", category: "residential", title: "Emerald Business Park" },
-  { src: "/projects/p6.png", category: "ongoing", title: "Royal Heights" },
-  { src: "/projects/bunglow.png", category: "completed", title: "Green Valley Villas" },
-  { src: "/projects/p4.png", category: "commercial", title: "Sunshine Apartments" },
-  { src: "/projects/p8.png", category: "residential", title: "Platinum Towers" },
-  { src: "/projects/p7.png", category: "completed", title: "Diamond Enclave" },
-  { src: "/projects/haveli.png", category: "completed", title: "The Patel's Haveli" },
-];
+import { supabase } from "../lib/supabase";
 
 const categories = ["all", "residential", "commercial", "ongoing", "completed"];
 
 const Portfolio = () => {
+  const [projects, setProjects] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState("all");
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  const filtered = filter === "all" ? projects : projects.filter(p => p.category === filter);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false });
 
-  const openLightbox = (index) => {
-    setPhotoIndex(index);
-    setLightboxOpen(true);
-  };
+      if (error) {
+        console.error("Error loading projects:", error);
+      } else {
+        const projectsWithUrls = data.map((p) => ({
+          ...p,
+          display_url: p.image_url, // already full URL from Supabase
+        }));
+
+        setProjects(projectsWithUrls);
+        setFiltered(projectsWithUrls);
+      }
+
+      setLoading(false);
+    };
+
+    fetchProjects();
+  }, []);
+
+  useEffect(() => {
+    if (filter === "all") {
+      setFiltered(projects);
+    } else {
+      setFiltered(projects.filter((p) => p.category === filter));
+    }
+  }, [filter, projects]);
+
+  if (loading) {
+    return (
+      <section className="py-5 text-center text-white">
+        <h2 className="display-3 fw-bold text-gold">Loading Your Empire...</h2>
+      </section>
+    );
+  }
 
   return (
     <section className="py-5 position-relative" style={{ minHeight: "100vh" }}>
-     
+      <div className="container">
 
-      <div className="container position-relative z-3">
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-5"
         >
           <h2 className="display-4 fw-bold text-white">
-            Our <span className="text-gold">Masterpieces</span>
+            Our{" "}
+            <span style={{ color: "#f9c513", textShadow: "0 0 40px rgba(249,197,19,0.8)" }}>
+              Masterpieces
+            </span>
           </h2>
-          <p className="lead text-white opacity-90">Crafting landmarks across Central India</p>
         </motion.div>
 
         {/* FILTER BUTTONS */}
         <div className="d-flex flex-wrap justify-content-center gap-3 mb-5">
           {categories.map((cat) => (
-            <motion.button
+            <button
               key={cat}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-pill fw-bold text-uppercase ${
                 filter === cat
                   ? "bg-warning text-dark"
-                  : "bg-white bg-opacity-10 text-white border border-warning"
+                  : "bg-dark bg-opacity-50 text-white border border-warning"
               }`}
-              style={{ minWidth: "120px" }}
             >
               {cat === "all" ? "All Projects" : cat}
-            </motion.button>
+            </button>
           ))}
         </div>
 
-        {/* MASONRY GRID */}
-        <motion.div
-          layout
-          className="row g-3 g-md-4"
-          style={{
-            columnCount: 1,
-            columnGap: "1rem",
-          }}
-          breakpoints={{ 768: 2, 992: 3 }}
-        >
+        {/* ONE CARD PER ROW */}
+        <div className="d-flex flex-column  gap-4">
           {filtered.map((project, i) => (
             <motion.div
-              key={i}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="break-inside-avoid mb-4 cursor-pointer"
-              onClick={() => openLightbox(filtered.indexOf(project))}
-            >
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                className="position-relative w-100 overflow-hidden rounded-3 shadow-lg"
-                style={{ border: "2px solid rgba(249,197,19,0.3)" }}
-              >
-                
-                <img
-                  src={project.src}
-                  alt={project.title}
-                  className="w-100 "
-                  loading="lazy"
-                  style={{
-                    display: "block",
-                    filter: "brightness(0.9)",
-                    transition: "all 0.4s",
-                  }}
-                />
-                <div className="position-absolute bottom-0 start-0 w-100 p-4 text-white"
-                  style={{
-                    background: "linear-gradient(transparent, rgba(0,0,0,0.9))",
-                  }}
-                >
-                  <h5 className="fw-bold">{project.title}</h5>
-                  <p className="small text-gold text-uppercase">{project.category}</p>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+  key={i}
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  whileHover={{ scale: 1.03, y: -12 }}
+  transition={{ duration: 0.4 }}
+  className="mx-auto"
+  style={{
+    width: "100%",
+    
+    Width: "1200px", // bigger card width
+    cursor: "pointer",
+  }}
+>
+  <div
+    className="position-relative overflow-hidden rounded-4 shadow-lg"
+    style={{
+      border: "3px solid #f9c513",
+      height: "550px", // increased card height
+    }}
+  >
+    <img
+      src={project.display_url}
+      alt={project.name}
+      className="w-100 h-100"
+      style={{
+        objectFit: "cover",   // fills entire card
+        objectPosition: "center",
+        transition: "transform 0.4s ease",
+      }}
+      loading="lazy"
+    />
 
-      {/* LIGHTBOX */}
-      {lightboxOpen && (
-        <Lightbox
-          open={lightboxOpen}
-          close={() => setLightboxOpen(false)}
-          index={photoIndex}
-          slides={filtered.map(p => ({ src: p.src }))}
-          plugins={[Thumbnails]}
-          thumbnails={{ width: 80, height: 60, border: 2, borderRadius: 8 }}
-        />
-      )}
+    <div
+      className="position-absolute bottom-0 start-0 w-100 p-4 text-white"
+      style={{
+        background: "linear-gradient(transparent, rgba(0,0,0,0.95))",
+      }}
+    >
+      <h4 className="fw-bold">{project.name}</h4>
+      <p className="text-warning text-uppercase">{project.category}</p>
+    </div>
+  </div>
+</motion.div>
+
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

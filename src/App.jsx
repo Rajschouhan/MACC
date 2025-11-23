@@ -7,7 +7,7 @@ import Portfolio from './components/Portfolio'; //3
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact'; //4
 import Footer from './components/Footer';
-import AdminPanel from './components/Adminpanel';
+import Admin from './components/Admin';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Hero1 />} /> {/* Home = Hero1 first */}
-          <Route path="/admin-macc" element={<AdminPanel />} />
+         <Route path="/admin" element={<Admin />} />
           {/* Later: /projects, /admin */}
         </Routes>
       <Hero2/>
