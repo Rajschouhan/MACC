@@ -34,14 +34,17 @@ const Portfolio = () => {
 
     fetchProjects();
   }, []);
-
-  useEffect(() => {
+useEffect(() => {
+  setTimeout(() => {
     if (filter === "all") {
       setFiltered(projects);
     } else {
       setFiltered(projects.filter((p) => p.category === filter));
     }
-  }, [filter, projects]);
+  }, 0);
+}, [filter, projects]);
+
+  
 
   if (loading) {
     return (
@@ -52,7 +55,7 @@ const Portfolio = () => {
   }
 
   return (
-    <section className="py-5 position-relative" style={{ minHeight: "100vh" }}>
+    <section id="portfolio" className="py-5 position-relative" style={{ minHeight: "100vh" }}>
       <div className="container">
 
         {/* HEADER */}

@@ -10,7 +10,7 @@ const features = [
 ];
 
 const Hero1 = () => (
-  <section
+  <section id="home"
     className="py-5 position-relative"
    style={{
   minHeight: "90vh",
