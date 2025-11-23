@@ -1,4 +1,4 @@
-// src/components/Services.jsx → OPTIMIZED & CLEAN VERSION
+// src/components/Services.jsx
 import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 
@@ -19,14 +19,11 @@ const cardAnimation = {
 
 const Services = () => { 
   return (
-    <section className="py-5 position-relative overflow-hidden" style={{
-  background: "linear-gradient(135deg, #0a0a1f 0%, #001233 100%)",
-  paddingTop: "var(--navbar-height, 100px)",
-  minHeight: "100vh"
-}} >
-
-
-
+    <section id="services" className="py-5 position-relative overflow-hidden" style={{
+      background: "linear-gradient(135deg, #0a0a1f 0%, #001233 100%)",
+      paddingTop: "var(--navbar-height, 100px)",
+      minHeight: "100vh"
+    }} >
 
       <Container className="position-relative z-3">
         
@@ -46,34 +43,44 @@ const Services = () => {
         {/* Service Cards */}
         <Row className="g-4 g-md-5 justify-content-center">
           {services.map((service, i) => (
-            <Col xs={11} sm={9} md={6} lg={4} key={i}>
+            // ADDED: d-flex align-items-stretch ensures the column stretches to max height
+            <Col xs={11} sm={9} md={6} lg={4} key={i} className="d-flex align-items-stretch">
               <motion.div
                 {...cardAnimation}
                 transition={{ delay: i * 0.12, duration: 0.7 }}
                 whileHover={{ y: -12 }}
+                className="w-100" // ADDED: Ensures motion div takes full width
               >
-                <div className="service-card text-center p-4 rounded-4">
+                {/* UPDATED CLASS NAMES BELOW: 
+                   1. h-100: Forces the card to take full height of the column.
+                   2. d-flex flex-column: Enables flexbox for vertical alignment.
+                   3. justify-content-between: Pushes content apart if needed (optional).
+                */}
+                <div className="service-card text-center p-4 rounded-4 h-100 d-flex flex-column">
                   
-                  {/* Icon */}
-                  <motion.img
-                    src={service.icon}
-                    alt={service.title}
-                    width={95}
-                    height={95}
-                    loading="lazy"
-                    className="mb-3"
-                    style={{ filter: "drop-shadow(0 0 25px rgba(249,197,19,0.6))" }}
-                    whileHover={{ scale: 1.15, rotate: 360 }}
-                    transition={{ duration: 0.8 }}
-                  />
+                  {/* Top Content Group (to keep icon/title/desc together) */}
+                  <div className="flex-grow-1">
+                      {/* Icon */}
+                      <motion.img
+                        src={service.icon}
+                        alt={service.title}
+                        width={95}
+                        height={95}
+                        loading="lazy"
+                        className="mb-3"
+                        style={{ filter: "drop-shadow(0 0 25px rgba(249,197,19,0.6))" }}
+                        whileHover={{ scale: 1.15, rotate: 360 }}
+                        transition={{ duration: 0.8 }}
+                      />
 
-                  {/* Title */}
-                  <h4 className="fw-bold mb-2">{service.title}</h4>
+                      {/* Title */}
+                      <h4 className="fw-bold mb-2">{service.title}</h4>
 
-                  {/* Description */}
-                  <p className="service-desc">{service.desc}</p>
+                      {/* Description */}
+                      <p className="service-desc">{service.desc}</p>
+                  </div>
 
-                  {/* Divider */}
+                  {/* Divider - ADDED mt-3 to ensure spacing at bottom */}
                   <div className="gold-line mx-auto mt-3"></div>
                 </div>
               </motion.div>

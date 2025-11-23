@@ -15,17 +15,17 @@ const cards = [
   },
   {
     type: 'project',
-    img: '/project1.jpg',
-    title: 'Skyline Residency',
-    location: 'Vijay Nagar, Indore',
+    img: '/projects/c1.png',
+    title: 'MODERN CONSTRUCTION',
+    location: 'Indore',
     tag: 'Completed 2024',
   },
  
   {
     type: 'project',
-    img: '/project2.jpg',
-    title: 'Emerald Heights',
-    location: 'Rau, Indore',
+    img: '/projects/interior2.png',
+    title: 'MODERN INTERIORS',
+    location: 'Indore',
     tag: 'Under Construction',
   },
 ];
@@ -46,9 +46,7 @@ const cards = [
       }}
     >
       {/* Background Logo */}
-      <div className="position-absolute top-50 start-50 translate-middle opacity-5 pointer-events-none">
-        <img src="/logo-full.png" alt="" style={{ maxWidth: '1400px', width: '100vw' }} />
-      </div>
+     
 
       <Container className="position-relative z-3">
         <motion.h2
@@ -143,7 +141,7 @@ const cards = [
 };
 
 // Reusable Card Component
-const CardItem = ({ card, isCenter = false, isSide = false }) => {
+const CardItem = ({ card, isCenter = false }) => {
   return (
     <motion.div
       className="rounded-4 overflow-hidden position-relative"
