@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "../lib/supabase";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 
 const categories = ["all", "residential", "commercial", "ongoing", "completed"];
 
@@ -9,6 +12,8 @@ const Portfolio = () => {
   const [filtered, setFiltered] = useState([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
+  const [lightboxOpen , setLightboxOpen] = useState(false);
+  const [selectedImage ,setSelectedImage] = useState ("");
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -105,18 +110,22 @@ useEffect(() => {
     Width: "1200px", // bigger card width
     cursor: "pointer",
   }}
+  onClick={ ()=>{
+    setSelectedImage(project.display_url);
+    setLightboxOpen(true);
+  }}
 >
   <div
     className="position-relative overflow-hidden rounded-4 shadow-lg"
     style={{
       border: "3px solid #f9c513",
-      height: "550px", // increased card height
+      height: "820px", // increased card height
     }}
   >
     <img
       src={project.display_url}
       alt={project.name}
-      className="w-100 h-100"
+      className="w-100"
       style={{
         objectFit: "cover",   // fills entire card
         objectPosition: "center",
@@ -140,6 +149,15 @@ useEffect(() => {
           ))}
         </div>
       </div>
+      {
+        lightboxOpen && (
+          <Lightbox
+            open={lightboxOpen}
+            close={() => setLightboxOpen(false)}
+            slides={[{ src: selectedImage }]}
+          />
+        )
+      }
     </section>
   );
 };

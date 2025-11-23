@@ -5,10 +5,13 @@
 
 html, body, #root {
   background: linear-gradient(135deg, #0a0a1f 0%, #001233 100%) !important;
-  min-height: 100vh;
+  min-height: 90vh;
+  font-size: 16px;
   font-family: 'Montserrat', sans-serif;
   color: white;
   overflow-x: hidden;
+  box-sizing: border-box  ;
+  zoom: 90%;
 }
 
 /* Force all sections to have the same gradient */
