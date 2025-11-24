@@ -1,109 +1,110 @@
-/* FINAL MAA ASHAPURA 2025 - MOBILE-FIRST LUXURY THEME */
+/* FINAL MASTER CSS - CLEAN & RESPONSIVE */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --gold: #f9c513;
+  --dark-bg: linear-gradient(135deg, #0a0a1f 0%, #001233 100%);
+}
 
-html, body, #root {
-  background: linear-gradient(135deg, #0a0a1f 0%, #001233 100%) !important;
-  min-height: 90vh;
-  font-size: 16px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- SCALING LOGIC (THE FIX) --- */
+html {
+  font-size: 16px; /* Desktop Standard */
   font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevents side-scroll */
+}
+
+body {
+  background: var(--dark-bg) !important;
   color: white;
-  overflow-x: hidden;
-  box-sizing: border-box  ;
+  min-height: 100vh;
+}
+
+/* Tablet & Mobile Scaling */
+@media (max-width: 992px) {
+  html {
+    font-size: 16px; /* Slightly smaller for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Mobile Standard - readable but compact */
+  }
   
+  /* Fix Bootstrap Container Padding on Mobile */
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  /* Fix huge headings on mobile */
+  .display-4 {
+    font-size: 2.5rem !important; 
+  }
 }
 
-/* Force all sections to have the same gradient */
-section, .hero-section {
-  background: linear-gradient(135deg, #0a0a1f 0%, #001233 100%);
-  position: relative;
-}
+/* --- GLOBAL STYLES --- */
 
-/* Golden text */
+/* Golden Text */
 .text-gold {
-  color: #f9c513 !important;
-  text-shadow: 0 0 40px rgba(249,197,19,0.8);
+  color: var(--gold) !important;
+  text-shadow: 0 0 30px rgba(249,197,19,0.5);
 }
 
-/* Mobile-first responsive cards */
+/* Service Cards */
 .service-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
-  border: 2px solid rgba(249,197,19,0.35);
+  border: 1px solid rgba(249, 197, 19, 0.3);
   border-radius: 20px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  height: 100%;
-  transition: all 0.4s ease;
+  padding: 2rem;
+  height: 100%; /* Ensures equal height in flex row */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(249,197,19,0.3);
-}
-
-/* Mobile adjustments */
-@media (max-width: 760px) {
-  .service-card {
-    padding: 1.2rem 1.2rem;
-    border-radius: 10px;
-  }
-  .service-card img {
-    width: 80px !important;
-    height: 80px !important;
-  }
-  h2.display-4 {
-    font-size: 3.5rem !important;
-  }
-  h4 {
-    font-size: 1.3rem !important;
-  }
-  p.lead {
-    font-size: 1.1rem !important;
-  }
-}
-
-.text-gold {
-  color: #f9c513;
-  text-shadow: 0 0 20px rgba(249, 197, 19, 0.4);
-}
-
-.service-card {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1.5px solid rgba(249, 197, 19, 0.35);
-  backdrop-filter: blur(12px);
-  transition: 0.4s ease;
-  color: #fff;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(249, 197, 19, 0.2);
+  border-color: var(--gold);
 }
 
 .service-desc {
-  opacity: 0.95;
-  font-size: 1rem;
+  color: #ddd;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
 .gold-line {
-  width: 60px;
-  height: 4px;
-  background: #f9c513;
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: auto; /* Pushes line to bottom */
   border-radius: 2px;
 }
 
-/* MAKE PLACEHOLDER VISIBLE & GOLDEN */
-.form-control::placeholder {
-  color: #f9c513 !important;
-  opacity: 0.9;
-  font-weight: 500;
+/* Form Styling */
+.form-control {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 0.8rem 1rem;
 }
 
-.form-control:focus::placeholder {
-  color: rgba(249,197,19,0.6);
-}
-
-/* Golden glow on focus */
 .form-control:focus {
-  border-color: #f9c513 !important;
-  box-shadow: 0 0 20px rgba(249,197,19,0.4) !important;
-  background: rgba(249,197,19,0.05) !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 15px rgba(249, 197, 19, 0.3) !important;
+}
+
+.form-control::placeholder {
+  color: rgba(249, 197, 19, 0.7) !important;
 }
