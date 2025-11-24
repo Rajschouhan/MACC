@@ -5,7 +5,7 @@ import { BsWhatsapp, BsTelephoneFill, BsEnvelopeFill, BsGeoAltFill } from "react
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-5 position-relative" style={{ minHeight: "100vh" }}>
+    <section id="contact" className="py-5 position-relative" style={{ minHeight: "60vh" }}>
       
 
       <Container className="position-relative z-3">

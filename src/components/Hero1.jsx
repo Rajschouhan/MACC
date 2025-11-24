@@ -13,7 +13,7 @@ const Hero1 = () => (
   <section id="home"
     className="py-5 position-relative"
    style={{
-  minHeight: "90vh",
+  minHeight: "60vh",
   background: "linear-gradient(135deg, #0a0a1f, #001233)",
   backgroundImage: "url('/bgImg.png')",
   backgroundSize: "cover",

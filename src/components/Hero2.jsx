@@ -42,7 +42,7 @@ const cards = [
       className="py-5 position-relative overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #0a0a1f 0%, #001233 100%)',
-        minHeight: '100vh',
+        minHeight: '60vh',
       }}
     >
       {/* Background Logo */}

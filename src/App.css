@@ -1,43 +1,115 @@
-#root {
-  width: 100%;
+/* FINAL MOBILE-FIRST LUXURY THEME — MAA ASHAPURA 2025 (PERFECT ON EVERY PHONE) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a1f 0%, #001233 100%) !important;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  overflow-x: hidden;
+  font-size: 16px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* MOBILE FIRST — SABSE PEHLE PHONE KE LIYE PERFECT */
+@media (max-width: 768px) {
+  html { font-size: 17px; } /* Text thoda bada dikhega */
+
+  /* Hero Section */
+  .hero-section {
+    padding: 6rem 1rem 4rem !important;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .hero-section h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.2;
+  }
+  .hero-section p {
+    font-size: 1.2rem !important;
+    margin: 1rem 0;
+  }
+
+  /* Section Padding Reduce */
+  section {
+    padding: 4rem 1rem !important;
+  }
+
+  /* Cards Grid — 1 column on mobile */
+  .row > div[class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Service Cards */
+  .service-card {
+    padding: 2rem 1.5rem !important;
+    margin: 0 auto;
+    max-width: 380px;
+  }
+  .service-card img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  /* Portfolio Cards — Ab full width aur bada dikhega */
+  .portfolio-card {
+    width: 100% !important;
+    margin-bottom: 3rem;
+  }
+  .portfolio-card img {
+    height: 420px !important;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  /* Testimonials */
+  .testimonial-card {
+    padding: 2rem 1.5rem !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Contact Form */
+  .form-control, .form-select {
+    font-size: 1.1rem !important;
+    padding: 1rem !important;
+  }
+
+  /* Buttons bade */
+  .btn {
+    padding: 1rem 2rem !important;
+    font-size: 1.2rem !important;
+  }
+
+  /* Navbar logo */
+  .navbar-brand img {
+    height: 50px !important;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Tablet aur Desktop ke liye bada */
+@media (min-width: 769px) {
+  html { font-size: 16px; }
+  .hero-section h1 { font-size: 4.5rem !important; }
+  section { padding: 6rem 2rem !important; }
 }
 
-.card {
-  padding: 2em;
+/* Golden Text */
+.text-gold {
+  color: #f9c513 !important;
+  text-shadow: 0 0 30px rgba(249,197,19,0.7);
 }
 
-.read-the-docs {
-  color: #888;
+/* Golden Border Cards */
+.gold-border {
+  border: 3px solid #f9c513 !important;
+  border-radius: 24px;
+  overflow: hidden;
 }

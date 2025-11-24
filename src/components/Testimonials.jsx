@@ -14,7 +14,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-5 position-relative" style={{ minHeight: "90vh" }}>
+    <section id="testimonials" className="py-5 position-relative" style={{ minHeight: "45vh" }}>
       
 
       <Container className="position-relative z-3">
