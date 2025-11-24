@@ -13,7 +13,7 @@ const Hero1 = () => (
   <section id="home"
     className="py-5 position-relative"
    style={{
-  minHeight: "60vh",
+  minHeight: "90vh",
   background: "linear-gradient(135deg, #0a0a1f, #001233)",
   backgroundImage: "url('/bgImg.png')",
   backgroundSize: "cover",
@@ -22,7 +22,7 @@ const Hero1 = () => (
   paddingTop: "var(--navbar-height, 100px)",
 }}
   >
-    <Container>
+    <Container className="pt-4">
       <Row className="align-items-center mt-5 gy-5">
 
         {/* LEFT CONTENT */}

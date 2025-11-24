@@ -1,5 +1,10 @@
-/* FINAL MOBILE-FIRST LUXURY THEME — MAA ASHAPURA 2025 (PERFECT ON EVERY PHONE) */
+/* FINAL MASTER CSS - CLEAN & RESPONSIVE */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap');
+
+:root {
+  --gold: #f9c513;
+  --dark-bg: linear-gradient(135deg, #0a0a1f 0%, #001233 100%);
+}
 
 * {
   margin: 0;
@@ -7,109 +12,99 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a1f 0%, #001233 100%) !important;
+/* --- SCALING LOGIC (THE FIX) --- */
+html {
+  font-size: 16px; /* Desktop Standard */
   font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevents side-scroll */
+}
+
+body {
+  background: var(--dark-bg) !important;
   color: white;
-  overflow-x: hidden;
-  font-size: 16px;
+  min-height: 100vh;
 }
 
-/* MOBILE FIRST — SABSE PEHLE PHONE KE LIYE PERFECT */
+/* Tablet & Mobile Scaling */
+@media (max-width: 992px) {
+  html {
+    font-size: 15px; /* Slightly smaller for tablets */
+  }
+}
+
 @media (max-width: 768px) {
-  html { font-size: 17px; } /* Text thoda bada dikhega */
-
-  /* Hero Section */
-  .hero-section {
-    padding: 6rem 1rem 4rem !important;
-    text-align: center;
+  html {
+    font-size: 14px; /* Mobile Standard - readable but compact */
   }
-  .hero-section h1 {
-    font-size: 2.8rem !important;
-    line-height: 1.2;
+  
+  /* Fix Bootstrap Container Padding on Mobile */
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
-  .hero-section p {
-    font-size: 1.2rem !important;
-    margin: 1rem 0;
-  }
-
-  /* Section Padding Reduce */
-  section {
-    padding: 4rem 1rem !important;
-  }
-
-  /* Cards Grid — 1 column on mobile */
-  .row > div[class*="col-"] {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
-    margin-bottom: 2rem;
-  }
-
-  /* Service Cards */
-  .service-card {
-    padding: 2rem 1.5rem !important;
-    margin: 0 auto;
-    max-width: 380px;
-  }
-  .service-card img {
-    width: 90px !important;
-    height: 90px !important;
-  }
-
-  /* Portfolio Cards — Ab full width aur bada dikhega */
-  .portfolio-card {
-    width: 100% !important;
-    margin-bottom: 3rem;
-  }
-  .portfolio-card img {
-    height: 420px !important;
-    object-fit: cover;
-    border-radius: 20px;
-  }
-
-  /* Testimonials */
-  .testimonial-card {
-    padding: 2rem 1.5rem !important;
-    margin-bottom: 2rem;
-  }
-
-  /* Contact Form */
-  .form-control, .form-select {
-    font-size: 1.1rem !important;
-    padding: 1rem !important;
-  }
-
-  /* Buttons bade */
-  .btn {
-    padding: 1rem 2rem !important;
-    font-size: 1.2rem !important;
-  }
-
-  /* Navbar logo */
-  .navbar-brand img {
-    height: 50px !important;
+  
+  /* Fix huge headings on mobile */
+  .display-4 {
+    font-size: 2.5rem !important; 
   }
 }
 
-/* Tablet aur Desktop ke liye bada */
-@media (min-width: 769px) {
-  html { font-size: 16px; }
-  .hero-section h1 { font-size: 4.5rem !important; }
-  section { padding: 6rem 2rem !important; }
-}
+/* --- GLOBAL STYLES --- */
 
 /* Golden Text */
 .text-gold {
-  color: #f9c513 !important;
-  text-shadow: 0 0 30px rgba(249,197,19,0.7);
+  color: var(--gold) !important;
+  text-shadow: 0 0 30px rgba(249,197,19,0.5);
 }
 
-/* Golden Border Cards */
-.gold-border {
-  border: 3px solid #f9c513 !important;
-  border-radius: 24px;
-  overflow: hidden;
+/* Service Cards */
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(249, 197, 19, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  height: 100%; /* Ensures equal height in flex row */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(249, 197, 19, 0.2);
+  border-color: var(--gold);
+}
+
+.service-desc {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.gold-line {
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: auto; /* Pushes line to bottom */
+  border-radius: 2px;
+}
+
+/* Form Styling */
+.form-control {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 0.8rem 1rem;
+}
+
+.form-control:focus {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 15px rgba(249, 197, 19, 0.3) !important;
+}
+
+.form-control::placeholder {
+  color: rgba(249, 197, 19, 0.7) !important;
 }
