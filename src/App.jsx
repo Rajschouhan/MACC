@@ -8,6 +8,8 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact'; //4
 import Footer from './components/Footer';
 import Admin from './components/Admin';
+import './App.css';
+import './index.css';
 
 function App() {
   return (

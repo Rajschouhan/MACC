@@ -11,7 +11,7 @@ html, body, #root {
   color: white;
   overflow-x: hidden;
   box-sizing: border-box  ;
-  zoom: 90%;
+  
 }
 
 /* Force all sections to have the same gradient */
@@ -44,17 +44,17 @@ section, .hero-section {
 }
 
 /* Mobile adjustments */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .service-card {
-    padding: 1.8rem 1.2rem;
-    border-radius: 16px;
+    padding: 1.2rem 1.2rem;
+    border-radius: 10px;
   }
   .service-card img {
     width: 80px !important;
     height: 80px !important;
   }
   h2.display-4 {
-    font-size: 2.5rem !important;
+    font-size: 3.5rem !important;
   }
   h4 {
     font-size: 1.3rem !important;

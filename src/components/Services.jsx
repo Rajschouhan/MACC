@@ -22,7 +22,7 @@ const Services = () => {
     <section id="services" className="py-5 position-relative overflow-hidden" style={{
       background: "linear-gradient(135deg, #0a0a1f 0%, #001233 100%)",
       paddingTop: "var(--navbar-height, 100px)",
-      minHeight: "100vh"
+      minHeight: "60vh"
     }} >
 
       <Container className="position-relative z-3">
