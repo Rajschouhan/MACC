@@ -95,7 +95,7 @@ useEffect(() => {
         </div>
 
         {/* ONE CARD PER ROW */}
-        <div className="d-flex flex-column  gap-4">
+        <div style={{zoom:'70%' }} className="d-flex flex-column  gap-4">
           {filtered.map((project, i) => (
             <motion.div
   key={i}
@@ -105,7 +105,7 @@ useEffect(() => {
   transition={{ duration: 0.4 }}
   className="mx-auto"
   style={{
-    width: "100%",
+    width: "90%",
     
     Width: "1200px", // bigger card width
     cursor: "pointer",
