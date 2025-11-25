@@ -14,7 +14,7 @@
 
 /* --- SCALING LOGIC (THE FIX) --- */
 html {
-  font-size: 16px; /* Desktop Standard */
+  font-size: 11px; /* Desktop Standard */
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden; /* Prevents side-scroll */
@@ -23,6 +23,7 @@ html {
 body {
   background: var(--dark-bg) !important;
   color: white;
+  ;
   min-height: 100vh;
 }
 
@@ -30,8 +31,23 @@ body {
 @media (max-width: 992px) {
   html {
     font-size: 16px; /* Slightly smaller for tablets */
+
+  }
+  #home{
+    font-size: larger;
+    zoom: 130%;
   }
 }
+
+
+
+
+#navicon{
+  
+  background-color:beige;
+}
+
+
 
 @media (max-width: 768px) {
   html {
@@ -108,3 +124,77 @@ body {
 .form-control::placeholder {
   color: rgba(249, 197, 19, 0.7) !important;
 }
+
+/* --- MOBILE NAVBAR FIXES --- */
+
+/* 1. When the menu opens on mobile, give it a solid luxury background */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%; /* Pushes it right below the logo bar */
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 31, 0.98); /* Deep Blue Solid BG */
+    backdrop-filter: blur(15px); /* Glass effect */
+    padding: 2rem 1rem;
+    border-bottom: 3px solid #f9c513; /* Gold border at bottom */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 1000;
+    text-align: center;
+    
+    /* Smooth Animation */
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* 2. Make links bigger and clickable on mobile */
+  .navbar-nav .nav-link {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 1.2rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+  }
+
+  /* 3. Social icons styling */
+  .social-icons-mobile {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- DESKTOP ZOOM FIX --- */
+
+/* Only apply this to Laptops and Desktops (min-width: 992px) */
+@media (min-width: 992px) {
+  html {
+    /* Standard is 16px. 
+       Setting this to 13px makes the whole site look 
+       like it is zoomed out to ~80%.
+    */
+    font-size: 13px !important; 
+  }
+
+  /* Optional: Constrain huge images if they are still too big */
+  .container {
+    max-width: 1200px !important; /* Prevents content from stretching too wide on huge screens */
+  }
+  
+  /* Optional: Make the navigation bar slimmer on desktop */
+  .navbar {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+}
+
+/* --- KEEP MOBILE NORMAL --- */
+@media (max-width: 991px) {
+  html {
+    font-size: 15px !important; /* Keep mobile readable */
+  }
+}
+

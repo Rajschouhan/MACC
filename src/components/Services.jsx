@@ -41,10 +41,10 @@ const Services = () => {
         </motion.div>
 
         {/* Service Cards */}
-        <Row className="g-4 g-md-5 justify-content-center">
+        <Row className="g-4 g-md-5 justify-content-center"   >
           {services.map((service, i) => (
             // ADDED: d-flex align-items-stretch ensures the column stretches to max height
-            <Col xs={11} sm={9} md={6} lg={4} key={i} className="d-flex align-items-stretch">
+            <Col style={{ zoom: '90%' }} xs={11} sm={9} md={6} lg={4} key={i} className="d-flex align-items-stretch">
               <motion.div
                 {...cardAnimation}
                 transition={{ delay: i * 0.12, duration: 0.7 }}

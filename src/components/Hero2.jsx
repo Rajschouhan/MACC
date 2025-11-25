@@ -41,8 +41,10 @@ const cards = [
     <section
       className="py-5 position-relative overflow-hidden"
       style={{
+        
         background: 'linear-gradient(135deg, #0a0a1f 0%, #001233 100%)',
-        minHeight: '60vh',
+        minHeight: '55vh',
+        
       }}
     >
       {/* Background Logo */}
@@ -53,13 +55,14 @@ const cards = [
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center text-white mb-5"
-          style={{ fontSize: '3rem', fontWeight: 800 }}
+          style={{
+             fontSize: '3rem', fontWeight: 800 }}
         >
           <span style={{ color: '#f9c513' }}>Crafting</span> Landmarks of Tomorrow
         </motion.h2>
 
         {/* Carousel Container */}
-        <div className="position-relative" style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="position-relative" style={{ maxWidth: '1400px', margin: '0 auto' , zoom: '80%' ,paddingTop:'9rem' }}>
           <div className="d-flex align-items-center justify-content-center gap-4 position-relative">
             {/* LEFT CARD */}
             <motion.div
@@ -171,17 +174,17 @@ const CardItem = ({ card, isCenter = false }) => {
       >
         {card.type === 'logo' ? (
           <>
-            <h3 className="fw-bold mb-1" style={{ fontSize: '2.4rem', color: '#f9c513' }}>
+            <h3 className="fw-bold mb-1  " style={{  fontSize: '3.3rem', color: '#f9c513' }}>
               {card.title}
             </h3>
-            <p className="mb-1" style={{ fontSize: '1.3rem', color: '#fff' }}>{card.subtitle}</p>
-            <p className="fw-bold" style={{ color: '#00eeff', fontSize: '1.4rem' }}>
+            <p className="mb-1 " style={{ fontSize: '1.3rem', color: '#fff' }}>{card.subtitle}</p>
+            <p className="fw-bold " style={{ color: '#00eeff', fontSize: '1.4rem' }}>
               {card.tagline}
             </p>
           </>
         ) : (
           <>
-            <h4 className="fw-bold text-white mb-1">{card.title}</h4>
+            <h4 className="fw-bold  text-white mb-1">{card.title}</h4>
             <p className="text-white opacity-80 mb-2">{card.location}</p>
             <span className="badge bg-warning text-dark fs-6 px-4 py-2">{card.tag}</span>
           </>
